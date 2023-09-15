@@ -8,8 +8,11 @@
     Title="imPhotoshop"
     Width="1920"
     Height="1080"
+    MinWidth="720"
+    MinHeight="480"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
+    WindowStyle="None"
     mc:Ignorable="d">
     <Grid Background="{DynamicResource BackgroundColor}">
         <Grid.RowDefinitions>
@@ -23,13 +26,44 @@
         </Grid.ColumnDefinitions>
 
         <!--  TOP PANEL  -->
-        <Border BorderBrush="{DynamicResource BackgroundColor}" BorderThickness="0,0,0,1">
-            <StackPanel
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Background="{DynamicResource PrimaryColor}"
-                Orientation="Horizontal" />
+        <Border
+            x:Name="topPanelBorder"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Background="{DynamicResource PrimaryColor}"
+            BorderBrush="{DynamicResource BorderColor}"
+            BorderThickness="0,0,0,1"
+            MouseDown="topPanelBorder_MouseDown">
+            <Grid HorizontalAlignment="Stretch">
+                <!--  Logo & Title  -->
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="LogoImage"
+                        Margin="5,0"
+                        Source="pack://application:,,,/Resources/Images/Icons/imPhotoshopLogo.ico" />
+                    <Label
+                        Content="imPhotoshop"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextColor}" />
+                </StackPanel>
+
+                <!--  Window Control Buttons  -->
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button
+                        Click="MinimizeWindowButton_Click"
+                        Content="―"
+                        Style="{StaticResource WindowControlButton}" />
+                    <Button
+                        Click="MaximizeWindowButton_Click"
+                        Content="▢"
+                        Style="{StaticResource WindowControlButton}" />
+                    <Button
+                        Click="CloseWindowButton_Click"
+                        Content="✕"
+                        Style="{StaticResource WindowControlButton}" />
+                </StackPanel>
+            </Grid>
         </Border>
 
         <!--  LEFT PANEL (TOOLS)  -->
@@ -40,7 +74,7 @@
 
         <!--  CANVAS  -->
         <Grid Grid.Row="1" Grid.Column="1">
-            <Border BorderBrush="{DynamicResource AccentColor}" BorderThickness="3">
+            <Border BorderBrush="Transparent" BorderThickness="3">
                 <InkCanvas x:Name="mainInkCanvas" Background="Transparent">
                     <InkCanvas.DefaultDrawingAttributes>
                         <DrawingAttributes Width="6" Color="White" />

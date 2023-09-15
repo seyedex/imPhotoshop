@@ -23,9 +23,9 @@ namespace imPhotoshop.WPF
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddScoped<MainViewModel>();
+            services.AddScoped<MainWindowViewModel>();
 
-            services.AddSingleton<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
+            services.AddSingleton<MainWindow>(s => new MainWindow(s.GetRequiredService<MainWindowViewModel>()));
 
             return services.BuildServiceProvider();
         }

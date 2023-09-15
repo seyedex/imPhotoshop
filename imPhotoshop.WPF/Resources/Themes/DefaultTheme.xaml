@@ -6,6 +6,8 @@
     <SolidColorBrush x:Key="BorderColor">#262626</SolidColorBrush>
     <SolidColorBrush x:Key="AccentColor">#d6d6d6</SolidColorBrush>
     <SolidColorBrush x:Key="TextColor">#ababab</SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonForeground">#ababab</SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBackgroundOnMouseOver">#262626</SolidColorBrush>
 
 </ResourceDictionary>
 
