@@ -6,9 +6,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Themes/DefaultTheme.xaml" />
+                <ResourceDictionary Source="Resources/Themes/DarkTheme.xaml" />
                 <ResourceDictionary Source="Resources/Dictionaries/IconsDictionary.xaml" />
                 <ResourceDictionary Source="Resources/Styles/WindowControlButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ToolButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
