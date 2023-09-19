@@ -4,13 +4,11 @@ using System.Windows.Input;
 
 namespace imPhotoshop.WPF.Views;
 
-public partial class MainWindow : Window
+public partial class ShellView : Window
 {
-    public MainWindow(object dataContext)
+    public ShellView()
     {
         InitializeComponent();
-
-        this.DataContext = dataContext;
     }
 
     private void topPanelBorder_MouseDown(object sender, MouseButtonEventArgs e)
@@ -28,7 +26,7 @@ public partial class MainWindow : Window
     {
         if (Application.Current.MainWindow.WindowState != WindowState.Maximized)
             Application.Current.MainWindow.WindowState = WindowState.Maximized;
-        else 
+        else
             Application.Current.MainWindow.WindowState = WindowState.Normal;
     }
 
