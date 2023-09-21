@@ -1,7 +1,9 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace imPhotoshop.WPF.Core.Interfaces.Navigation;
 
 public interface INavigator
 {
-    void Navigate<T>();
+    Task NavigateAsync<T>();
 }

@@ -4,6 +4,9 @@ using System.Windows;
 using Caliburn.Micro;
 using System.Collections.Generic;
 using imPhotoshop.WPF.ViewModels;
+using imPhotoshop.WPF.Core.Interfaces.Navigation;
+using imPhotoshop.WPF.Models.Navigation;
+using imPhotoshop.WPF.Core.Interfaces.Shell;
 
 namespace imPhotoshop.WPF;
 
@@ -20,7 +23,7 @@ public class Bootstrapper : BootstrapperBase
 
     protected override async void OnStartup(object sender, StartupEventArgs e)
     {
-        await DisplayRootViewForAsync<ShellViewModel>();
+        await DisplayRootViewForAsync<IShell>();
     }
 
     protected override void Configure()
@@ -29,8 +32,12 @@ public class Bootstrapper : BootstrapperBase
 
         _container.Singleton<IWindowManager, WindowManager>();
 
-        _container.PerRequest<ShellViewModel>();
-        _container.PerRequest<ToolPanelViewModel>();
+        _container.Singleton<CanvasViewModel>();
+        _container.Singleton<ToolPanelViewModel>();
+        _container.Singleton<WorkspaceViewModel>();
+        _container.Singleton<IShell, ShellViewModel>();
+
+        _container.Singleton<INavigator, Navigator>();
     }
 
     protected override object GetInstance(Type service, string key)

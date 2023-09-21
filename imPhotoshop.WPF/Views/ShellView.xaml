@@ -40,8 +40,8 @@
             <Grid HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition MaxWidth="40" />
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="*" MinWidth="250" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
                 <!--  LOGO  -->
@@ -72,8 +72,11 @@
             </Grid>
         </Border>
 
-        <!--  TOOL PANEL  -->
-        <views:ToolPanelView Grid.Row="1" Grid.Column="0" />
+        <!--  LEFT PANEL  -->
+        <ContentControl
+            x:Name="ToolPanel"
+            Grid.Row="1"
+            Grid.Column="0" />
 
         <!--  CANVAS  -->
         <ContentControl
@@ -81,10 +84,10 @@
             Grid.Row="1"
             Grid.Column="1" />
 
-        <!--  RIGHT PANEL (WORKSPACE)  -->
-        <StackPanel
+        <!--  RIGHT PANEL  -->
+        <ContentControl
+            x:Name="Workspace"
             Grid.Row="1"
-            Grid.Column="2"
-            Background="{DynamicResource SecondaryColor}" />
+            Grid.Column="2" />
     </Grid>
 </Window>
