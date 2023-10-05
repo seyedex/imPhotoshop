@@ -8,39 +8,7 @@
     Background="{DynamicResource SecondaryColor}"
     mc:Ignorable="d">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-
         <!--  LAYERS  -->
-        <ListBox Background="Transparent" x:Name="Layers">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock
-                        Background="Transparent"
-                        FontSize="24"
-                        Foreground="White"
-                        Text="layer" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <!--  CANVAS CRUD  -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-
-            <Button
-                Width="25"
-                Height="25"
-                Content="X" />
-            <Button
-                Width="25"
-                Height="25"
-                Content="X" />
-            <Button
-                Width="25"
-                Height="25"
-                Content="X" />
-        </StackPanel>
+        <ContentControl x:Name="Layers" />
     </Grid>
 </UserControl>

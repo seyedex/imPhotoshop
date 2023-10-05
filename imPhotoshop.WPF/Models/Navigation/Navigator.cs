@@ -2,22 +2,23 @@
 using Caliburn.Micro;
 using imPhotoshop.WPF.Core.Interfaces.Navigation;
 using imPhotoshop.WPF.Core.Interfaces.Shell;
-using System.Threading.Tasks;
+using System;
 
 namespace imPhotoshop.WPF.Models.Navigation;
 
 public class Navigator : INavigator
 {
-    private readonly IShell _shell;
+    private readonly Lazy<IShell> _shell;
 
-    public Navigator(IShell shell)
+    private IShell Shell => _shell.Value;
+
+    public Navigator(Lazy<IShell> shell)
     {
         _shell = shell;
     }
 
-    public async Task NavigateAsync<T>()
+    public INavigationRequest<T> To<T>()
     {
-        var screen = IoC.Get<T>();
-        await _shell.ActivateItemAsync(screen);
+        return new NavigationRequest<T>(() => IoC.Get<T>(), Shell);
     }
 }

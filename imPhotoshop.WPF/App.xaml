@@ -13,6 +13,10 @@
                 <ResourceDictionary Source="Resources/Dictionaries/IconsDictionary.xaml" />
                 <ResourceDictionary Source="Resources/Styles/WindowControlButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ToolButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/LayerViewStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/LayersListBoxStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/LayersCRUDButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/Templates/CanvasLayerDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

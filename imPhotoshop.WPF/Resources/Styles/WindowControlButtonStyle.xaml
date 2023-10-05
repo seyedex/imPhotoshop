@@ -11,11 +11,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border
-                        x:Name="btnBorder"
+                        x:Name="Border"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}">
+
                         <ContentPresenter
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="Center"
@@ -26,7 +27,8 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="btnBorder" Property="Background" Value="{DynamicResource ButtonOnMouseOverBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ButtonOnMouseOverForeground}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ButtonOnMouseOverBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -23,7 +23,6 @@
     <Folder Include="Core\Converters\" />
     <Folder Include="Core\Enums\" />
     <Folder Include="Core\Exceptions\" />
-    <Folder Include="Commands\" />
   </ItemGroup>
 
   <ItemGroup>

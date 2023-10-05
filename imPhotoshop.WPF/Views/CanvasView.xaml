@@ -2,10 +2,16 @@
     x:Class="imPhotoshop.WPF.Views.CanvasView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:imPhotoshop.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <!--  THERE IS NO SIZE SET  -->
-    <Grid />
+    <Grid>
+        <ItemsControl
+            cal:Message.Attach="[Event MouseLeftButtonDown] = [Action MouseDown($source, $eventArgs)]; [Event MouseLeftButtonUp] = [Action MouseUp($source, $eventArgs)]; [Event MouseMove] = [Action MouseMove($source, $eventArgs)]"
+            Background="Transparent"
+            ItemTemplate="{StaticResource CanvasLayerDataTemplate}"
+            ItemsSource="{Binding Path=Layers}" />
+    </Grid>
 </UserControl>
