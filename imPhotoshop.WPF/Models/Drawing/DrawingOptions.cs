@@ -18,7 +18,9 @@ public class DrawingOptions : IDrawingOptions
         set
         {
             if (value >= 0 && value <= 1000)
+            {
                 _strokeThickness = value;
+            }
         }
     }
 

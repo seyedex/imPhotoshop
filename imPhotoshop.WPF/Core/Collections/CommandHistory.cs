@@ -28,8 +28,7 @@ public class CommandHistory : ICommandHistory
 
     public void Execute(ICommand command)
     {
-        if (_currentIndex != _history.Count && 
-            _currentIndex != -1)
+        if (_currentIndex != _history.Count - 1)
         {
             int nextCommandIndex = _currentIndex + 1;
             int commandsToDeleteCount = _history.Count - _currentIndex - 1;
@@ -51,10 +50,21 @@ public class CommandHistory : ICommandHistory
 
     public void Redo()
     {
-        if (_currentIndex < _history.Count)
+        if (CanExecuteNextCommand())
         {
-            _history[_currentIndex].Execute();
             _currentIndex++;
+            _history[_currentIndex].Execute();
         }
+    }
+
+    public void Clear()
+    {
+        _history.Clear();
+        _currentIndex = -1;
+    }
+
+    private bool CanExecuteNextCommand()
+    {
+        return _currentIndex + 1 < _history.Count;
     }
 }

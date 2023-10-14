@@ -9,4 +9,5 @@ public interface ICommandHistory
     public void Execute(ICommand command);
     public void Undo();
     public void Redo();
+    public void Clear();
 }

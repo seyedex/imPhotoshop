@@ -9,7 +9,7 @@
     mc:Ignorable="d">
     <Grid>
         <ItemsControl
-            cal:Message.Attach="[Event MouseLeftButtonDown] = [Action MouseDown($source, $eventArgs)]; [Event MouseLeftButtonUp] = [Action MouseUp($source, $eventArgs)]; [Event MouseMove] = [Action MouseMove($source, $eventArgs)]"
+            cal:Message.Attach="[Event MouseDown] = [Action Canvas_MouseDown($source, $eventArgs)]; [Event MouseUp] = [Action Canvas_MouseUp($source, $eventArgs)]; [Event MouseMove] = [Action Canvas_MouseMove($source, $eventArgs)]"
             Background="Transparent"
             ItemTemplate="{StaticResource CanvasLayerDataTemplate}"
             ItemsSource="{Binding Path=Layers}" />

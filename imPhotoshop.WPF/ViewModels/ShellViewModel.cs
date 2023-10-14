@@ -1,8 +1,11 @@
 ﻿
 using Caliburn.Micro;
+using imPhotoshop.WPF.Core.Extensions.Navigation;
+using imPhotoshop.WPF.Core.Helpers;
 using imPhotoshop.WPF.Core.Interfaces.Collections;
 using imPhotoshop.WPF.Core.Interfaces.Navigation;
 using imPhotoshop.WPF.Core.Interfaces.Shell;
+using Microsoft.Win32;
 
 namespace imPhotoshop.WPF.ViewModels;
 
@@ -31,5 +34,15 @@ public class ShellViewModel : Conductor<object>, IShell
     {
         base.OnViewLoaded(view);
         _navigator.To<CanvasViewModel>().Go();
+    }
+
+    public void Undo()
+    {
+        _commandHistory.Undo();
+    }
+
+    public void Redo()
+    {
+        _commandHistory.Redo();
     }
 }

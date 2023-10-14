@@ -40,12 +40,13 @@ public class LayersViewModel : Screen
     public void CreateLayer()
     {
         var newLayer = LayersHelper.CreateLayer();
-        _commandHistory.Execute(new AddLayerCommand(_layerCollection, newLayer));
+        var addLayerCommand = new AddLayerCommand(_layerCollection, newLayer);
+        _commandHistory.Execute(addLayerCommand);
     }
 
     public void DeleteLayer()
     {
-        _commandHistory.Undo();
-        //_commandHistory.Execute(new DeleteLayerCommand(_layers, SelectedLayer));
+        var deleteLayerCommand = new DeleteLayerCommand(_layerCollection, SelectedLayer);
+        _commandHistory.Execute(deleteLayerCommand);
     }
 }

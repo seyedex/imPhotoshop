@@ -10,6 +10,8 @@ using imPhotoshop.WPF.Core.Interfaces.Drawing;
 using imPhotoshop.WPF.Core.Extensions.Commands;
 using imPhotoshop.WPF.Core.Interfaces.Mediators;
 using imPhotoshop.WPF.Core.Interfaces.Collections;
+using imPhotoshop.WPF.Core.Interfaces.Navigation;
+using System.Windows.Controls;
 
 namespace imPhotoshop.WPF.ViewModels;
 
@@ -65,21 +67,24 @@ public class CanvasViewModel : Screen
 
     #region EventHandlers
 
-    public void MouseDown(object sender, MouseEventArgs e)
+    public void Canvas_MouseDown(object sender, MouseEventArgs e)
     {
-        if (SelectedLayer == null)
+        if (e.LeftButton == MouseButtonState.Pressed)
         {
-            MessageBox.Show("Select layer");
-            return;
+            if (SelectedLayer == null)
+            {
+                MessageBox.Show("Select layer");
+                return;
+            }
+
+            _drawingOptions.StartPosition = CursorHelper.GetRelativePosition(sender, e);
+            _drawingOptions.EndPosition = _drawingOptions.StartPosition;
+            CurrentElement = CurrentTool?.CreateElement(_drawingOptions);
+            _commandHistory.Execute(new DrawCommand(SelectedLayer, CurrentElement));
         }
-        
-        _drawingOptions.StartPosition = CursorHelper.GetRelativePosition(sender, e);
-        _drawingOptions.EndPosition = _drawingOptions.StartPosition;
-        CurrentElement = CurrentTool?.CreateElement(_drawingOptions);
-        _commandHistory.Execute(new DrawCommand(SelectedLayer, CurrentElement));
     }
     
-    public void MouseMove(object sender, MouseEventArgs e)
+    public void Canvas_MouseMove(object sender, MouseEventArgs e)
     {
         if (e.LeftButton == MouseButtonState.Pressed)
         {
@@ -91,7 +96,7 @@ public class CanvasViewModel : Screen
         }
     }
 
-    public void MouseUp(object sender, MouseEventArgs e)
+    public void Canvas_MouseUp(object sender, MouseEventArgs e)
     {
     }
 

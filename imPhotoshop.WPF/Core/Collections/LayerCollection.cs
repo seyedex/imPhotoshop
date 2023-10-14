@@ -9,7 +9,7 @@ namespace imPhotoshop.WPF.Core.Collections;
 
 public class LayerCollection : ILayerCollection
 {
-    public BindableCollection<ILayer> _layers = new();
+    private BindableCollection<ILayer> _layers = new();
 
     public void Add(ILayer layer)
     {
