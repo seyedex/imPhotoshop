@@ -45,4 +45,16 @@ public class ShellViewModel : Conductor<object>, IShell
     {
         _commandHistory.Redo();
     }
+
+    public void PlaceImage()
+    {
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "Images (*.jpg;*.png)|*.jpg;*.png|All files (*.*)|*.*";
+        openFileDialog.ShowDialog();
+
+        if (openFileDialog.FileName == string.Empty) return;
+
+        var image = ImageHelper.GetImage(openFileDialog.FileName);
+        _navigator.To<CanvasViewModel>().WithArguments(image).Go();
+    }
 }

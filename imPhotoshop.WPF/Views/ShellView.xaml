@@ -53,6 +53,37 @@
                     HorizontalAlignment="Center"
                     Source="{StaticResource imLogo}" />
 
+                <Menu
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Background="Transparent">
+                    <MenuItem Header="File" Style="{StaticResource MenuItemStyle}">
+                        <MenuItem
+                            FontSize="12"
+                            FontWeight="Medium"
+                            Foreground="{DynamicResource PrimaryColor}"
+                            Header="Create" />
+                        <MenuItem
+                            FontSize="12"
+                            FontWeight="Medium"
+                            Foreground="{DynamicResource PrimaryColor}"
+                            Header="Open" />
+                        <MenuItem
+                            x:Name="PlaceImage"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            Foreground="{DynamicResource PrimaryColor}"
+                            Header="Place Image" />
+                        <MenuItem
+                            Click="CloseWindowButton_Click"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            Foreground="{DynamicResource PrimaryColor}"
+                            Header="Close" />
+                    </MenuItem>
+                </Menu>
+
                 <!--  Window Control Buttons  -->
                 <StackPanel
                     Grid.Column="2"

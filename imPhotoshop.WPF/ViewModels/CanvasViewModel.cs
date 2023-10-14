@@ -15,7 +15,7 @@ using System.Windows.Controls;
 
 namespace imPhotoshop.WPF.ViewModels;
 
-public class CanvasViewModel : Screen
+public class CanvasViewModel : Screen, IAcceptArguments<Image>
 {
     #region Variables
 
@@ -62,6 +62,17 @@ public class CanvasViewModel : Screen
     }
 
     #endregion // Constructor
+
+
+
+    #region Methods
+
+    public void Accept(Image image)
+    {
+        SelectedLayer?.AddElement(image);
+    }
+
+    #endregion // Methods
 
 
 
