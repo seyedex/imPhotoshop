@@ -26,6 +26,18 @@
                 x:Name="LineToolChecked"
                 Content="{StaticResource BrushIcon}"
                 Style="{StaticResource ToolButtonStyle}" />
+            <RadioButton
+                x:Name="EraserToolChecked"
+                Content="{StaticResource BrushIcon}"
+                Style="{StaticResource ToolButtonStyle}" />
+            <Button
+                x:Name="OpenColorPicker"
+                Width="30"
+                Height="30"
+                Margin="5"
+                Background="White"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="2" />
         </hc:FlexPanel>
     </Grid>
 </UserControl>

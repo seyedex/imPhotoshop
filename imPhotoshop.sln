@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "imPhotoshop.WPF\WPF.csproj", "{02E44B74-23D1-43A9-A447-4A9C50207486}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "src\WPF\WPF.csproj", "{02E44B74-23D1-43A9-A447-4A9C50207486}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B4D5CCEE-9E97-45CB-BFD8-BFBD9BC8F8DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{56870764-E28C-4B9E-AA90-74926DC171CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{56870764-E28C-4B9E-AA90-74926DC171CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{304224E8-E68E-4909-8D6A-01DF84FDFF8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{304224E8-E68E-4909-8D6A-01DF84FDFF8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{51F71ED3-0722-4D34-83D7-80F845C52532}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{51F71ED3-0722-4D34-83D7-80F845C52532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

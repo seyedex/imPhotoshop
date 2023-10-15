@@ -11,7 +11,7 @@ public static class DrawCommandExtensiond
     public static void Redraw(this DrawCommand drawCommand, UIElement element, ITool tool, IDrawingOptions drawingOptions)
     {
         drawCommand.Undo();
-        drawCommand.Element = tool.Redraw(element, drawingOptions);
+        //drawCommand.Element = tool.Redraw(element, drawingOptions);
         drawCommand.Execute();
     }
 }

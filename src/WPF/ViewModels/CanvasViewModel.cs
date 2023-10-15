@@ -3,7 +3,6 @@ using Caliburn.Micro;
 using System.Windows;
 using System.Windows.Input;
 using imPhotoshop.WPF.Core.Helpers;
-using imPhotoshop.WPF.Models.Drawing;
 using imPhotoshop.WPF.Models.Commands;
 using imPhotoshop.WPF.Core.Interfaces.Tools;
 using imPhotoshop.WPF.Core.Interfaces.Drawing;
@@ -23,7 +22,7 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
     private readonly IToolMediator _toolMediator;
     private readonly ILayersMediator _layersMediator;
     private readonly ILayerCollection _layerCollection;
-    private readonly IDrawingOptions _drawingOptions = new DrawingOptions();
+    private readonly IDrawingOptions _drawingOptions;
 
     #endregion // Variables
 
@@ -48,7 +47,8 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
     public CanvasViewModel(ICommandHistory commandHistory,
                            IToolMediator toolMediator,
                            ILayersMediator layersMediator,
-                           ILayerCollection layerCollection)
+                           ILayerCollection layerCollection,
+                           IDrawingOptions drawingOptions)
     {
         _commandHistory = commandHistory;
 
@@ -59,6 +59,8 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
         _layersMediator.ActiveLayerChanged += LayersMediator_ActiveLayerChanged;
 
         _layerCollection = layerCollection;
+
+        _drawingOptions = drawingOptions;
     }
 
     #endregion // Constructor

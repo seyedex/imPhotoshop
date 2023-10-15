@@ -73,6 +73,7 @@ public class Bootstrapper : BootstrapperBase
         _container.Singleton<IWindowManager, WindowManager>();
         _container.Singleton<ICommandHistory, CommandHistory>();
         _container.Singleton<IToolMediator, ToolMediator>();
+        _container.Singleton<IDrawingOptions, DrawingOptions>();
         _container.Singleton<ILayersMediator, LayersMediator>();
         _container.Singleton<ILayerCollection, LayerCollection>();
         _container.Instance<INavigator>(new Navigator(new Lazy<IShell>(() => _container.GetInstance<IShell>())));

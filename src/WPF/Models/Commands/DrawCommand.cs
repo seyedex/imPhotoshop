@@ -8,28 +8,28 @@ namespace imPhotoshop.WPF.Models.Commands;
 public class DrawCommand : ICommand
 {
     private readonly ILayer _layer;
-    private UIElement _element;
-
+    private readonly UIElement _element;
+/*
     public UIElement Element 
     { 
         get => _element; 
         set => _element = value; 
     }
-
+*/
     public DrawCommand(ILayer layer, UIElement element)
     {
         _layer = layer;
-        Element = element;
+        _element = element;
     }
 
 
     public void Execute()
     {
-        _layer.AddElement(Element);
+        _layer.AddElement(_element);
     }
 
     public void Undo()
     {
-        _layer.RemoveElement(Element);
+        _layer.RemoveElement(_element);
     }
 }
