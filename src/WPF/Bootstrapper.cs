@@ -1,14 +1,11 @@
-﻿
-using System;
+﻿using System;
 using System.Windows;
 using Caliburn.Micro;
 using System.Windows.Input;
 using System.Collections.Generic;
 using imPhotoshop.Infrastructure;
 using Microsoft.Xaml.Behaviors.Input;
-using imPhotoshop.Infrastructure.Drawing;
 using imPhotoshop.Application.Common.Interfaces.Shell;
-using imPhotoshop.Application.Common.Interfaces.Drawing;
 
 namespace imPhotoshop.WPF;
 

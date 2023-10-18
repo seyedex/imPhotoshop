@@ -9,6 +9,8 @@ public class LayerCollection : ILayerCollection
 
     public IEnumerable<ILayer> Items => _layers;
 
+    public int Count => _layers.Count;
+
     public LayerCollection()
     {
         _layers = new List<ILayer>();
@@ -24,6 +26,11 @@ public class LayerCollection : ILayerCollection
         _layers.Add(layer);
     }
 
+    public void Insert(int index, ILayer layer)
+    {
+        _layers.Insert(index, layer);
+    }
+
     public void Remove(ILayer layer)
     {
         _layers.Remove(layer);
@@ -37,6 +44,11 @@ public class LayerCollection : ILayerCollection
     public bool Contains(ILayer layer)
     {
         return _layers.Contains(layer);
+    }
+
+    public int IndexOf(ILayer layer)
+    {
+        return _layers.IndexOf(layer);
     }
 
     public List<ILayer> ToList()

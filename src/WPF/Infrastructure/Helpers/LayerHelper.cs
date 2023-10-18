@@ -5,8 +5,10 @@ namespace imPhotoshop.WPF.Infrastructure.Helpers;
 
 public static class LayerHelper
 {
+    private static int i = 0;
+
     public static ILayer CreateLayer()
     {
-        return new CanvasLayer { Name = "New Layer" };
+        return new CanvasLayer { Name = $"New Layer {++i}" };
     }
 }

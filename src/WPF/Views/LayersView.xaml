@@ -33,6 +33,14 @@
                 x:Name="DeleteLayer"
                 Content="{StaticResource DeleteIcon}"
                 Style="{StaticResource LayersCRUDButtonStyle}" />
+            <Button
+                x:Name="PushLayerUp"
+                Content="{StaticResource UpArrowIcon}"
+                Style="{StaticResource LayersCRUDButtonStyle}" />
+            <Button
+                x:Name="PushLayerDown"
+                Content="{StaticResource DownArrowIcon}"
+                Style="{StaticResource LayersCRUDButtonStyle}" />
         </StackPanel>
     </Grid>
 </UserControl>

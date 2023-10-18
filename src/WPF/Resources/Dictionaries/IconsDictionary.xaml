@@ -9,6 +9,8 @@
 
     <system:String x:Key="AddIcon">➕</system:String>
     <system:String x:Key="DeleteIcon">✕</system:String>
+    <system:String x:Key="UpArrowIcon">⬆</system:String>
+    <system:String x:Key="DownArrowIcon">⬇</system:String>
 
     <ImageSource x:Key="imLogo">/Resources/Images/Icons/imPhotoshopLogo.ico</ImageSource>
     <ImageSource x:Key="BrushIcon">/Resources/Images/Icons/brush.png</ImageSource>
