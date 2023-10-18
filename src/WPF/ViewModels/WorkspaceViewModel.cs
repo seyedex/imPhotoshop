@@ -1,5 +1,4 @@
-﻿
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 
 namespace imPhotoshop.WPF.ViewModels;
 

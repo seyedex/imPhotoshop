@@ -5,6 +5,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <RootNamespace>$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,9 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Converters\" />
-    <Folder Include="Core\Enums\" />
-    <Folder Include="Core\Exceptions\" />
+    <Resource Include="Resources\Images\Icons\brush.png" />
+    <Resource Include="Resources\Images\Icons\imPhotoshopLogo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,9 +31,9 @@
     <PackageReference Include="Prism.Core" Version="8.1.97" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\Images\Icons\brush.png" />
-    <Resource Include="Resources\Images\Icons\imPhotoshopLogo.ico" />
-  </ItemGroup>
+   <ItemGroup>
+     <ProjectReference Include="..\Application\Application.csproj" />
+     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+   </ItemGroup>
 
 </Project>

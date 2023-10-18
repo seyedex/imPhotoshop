@@ -1,10 +1,9 @@
-﻿
-using Caliburn.Micro;
-using HandyControl.Controls;
+﻿using Caliburn.Micro;
 using HandyControl.Tools;
-using imPhotoshop.WPF.Core.Interfaces.Mediators;
-using imPhotoshop.WPF.Core.Interfaces.Tools;
-using imPhotoshop.WPF.Models.Tools;
+using HandyControl.Controls;
+using imPhotoshop.Application.Tools;
+using imPhotoshop.Application.Common.Interfaces.Tools;
+using imPhotoshop.Application.Common.Interfaces.Mediators;
 
 namespace imPhotoshop.WPF.ViewModels;
 
@@ -21,7 +20,6 @@ public class ToolPanelViewModel : Screen
     #endregion // Variables
 
 
-
     #region Constructor
 
     public ToolPanelViewModel(IToolMediator toolMediator)
@@ -31,7 +29,6 @@ public class ToolPanelViewModel : Screen
     }
 
     #endregion // Constructor
-
 
 
     #region Properties
@@ -45,7 +42,7 @@ public class ToolPanelViewModel : Screen
         set
         {
             _selectedTool = value;
-            _toolMediator.ChangeActiveTool(value);
+            _toolMediator.ChangeActiveItem(value);
             NotifyOfPropertyChange(() => SelectedTool);
         }
     }
@@ -95,10 +92,9 @@ public class ToolPanelViewModel : Screen
     #endregion // Properties
 
 
-
     #region Methods
 
-    public void OpenColorPicker()
+    /*public void OpenColorPicker()
     {
         var picker = SingleOpenHelper.CreateControl<ColorPicker>();
         var window = new PopupWindow
@@ -108,7 +104,7 @@ public class ToolPanelViewModel : Screen
         picker.SelectedColorChanged += delegate { window.Close(); };
         picker.Canceled += delegate { window.Close(); };
         window.Show();
-    }
+    }*/
 
     #endregion
 }

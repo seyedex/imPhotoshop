@@ -1,11 +1,9 @@
-﻿
-using Caliburn.Micro;
-using imPhotoshop.WPF.Core.Extensions.Navigation;
-using imPhotoshop.WPF.Core.Helpers;
-using imPhotoshop.WPF.Core.Interfaces.Collections;
-using imPhotoshop.WPF.Core.Interfaces.Navigation;
-using imPhotoshop.WPF.Core.Interfaces.Shell;
+﻿using Caliburn.Micro;
 using Microsoft.Win32;
+using imPhotoshop.Application.Common.Helpers;
+using imPhotoshop.Application.Common.Interfaces.Shell;
+using imPhotoshop.Application.Common.Interfaces.Navigation;
+using imPhotoshop.Application.Common.Interfaces.Collections;
 
 namespace imPhotoshop.WPF.ViewModels;
 
@@ -36,6 +34,11 @@ public class ShellViewModel : Conductor<object>, IShell
         _navigator.To<CanvasViewModel>().Go();
     }
 
+    public void ActivateItem(object item)
+    {
+        ActivateItemAsync(item);
+    }
+
     public void Undo()
     {
         _commandHistory.Undo();
@@ -55,6 +58,6 @@ public class ShellViewModel : Conductor<object>, IShell
         if (openFileDialog.FileName == string.Empty) return;
 
         var image = ImageHelper.GetImage(openFileDialog.FileName);
-        _navigator.To<CanvasViewModel>().WithArguments(image).Go();
+        _navigator.To<CanvasViewModel>().Screen.Accept(image);
     }
 }

@@ -1,16 +1,16 @@
-﻿
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using System.Windows;
 using System.Windows.Input;
-using imPhotoshop.WPF.Core.Helpers;
-using imPhotoshop.WPF.Models.Commands;
-using imPhotoshop.WPF.Core.Interfaces.Tools;
-using imPhotoshop.WPF.Core.Interfaces.Drawing;
-using imPhotoshop.WPF.Core.Extensions.Commands;
-using imPhotoshop.WPF.Core.Interfaces.Mediators;
-using imPhotoshop.WPF.Core.Interfaces.Collections;
-using imPhotoshop.WPF.Core.Interfaces.Navigation;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
+using imPhotoshop.Application.Commands;
+using imPhotoshop.Application.Common.Helpers;
+using imPhotoshop.Application.Extensions.Commands;
+using imPhotoshop.Application.Common.Interfaces.Tools;
+using imPhotoshop.Application.Common.Interfaces.Drawing;
+using imPhotoshop.Application.Common.Interfaces.Mediators;
+using imPhotoshop.Application.Common.Interfaces.Navigation;
+using imPhotoshop.Application.Common.Interfaces.Collections;
 
 namespace imPhotoshop.WPF.ViewModels;
 
@@ -20,17 +20,16 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
 
     private readonly ICommandHistory _commandHistory;
     private readonly IToolMediator _toolMediator;
-    private readonly ILayersMediator _layersMediator;
-    private readonly ILayerCollection _layerCollection;
+    private readonly ILayerMediator _layersMediator;
+    private readonly IObservableLayerCollection _layerCollection;
     private readonly IDrawingOptions _drawingOptions;
 
     #endregion // Variables
 
 
-
     #region Properties
 
-    public BindableCollection<ILayer> Layers => _layerCollection.ToBindableCollection();
+   public ObservableCollection<ILayer> Layers => _layerCollection.ObservableItems;
 
     public ILayer? SelectedLayer { get; private set; }
 
@@ -41,22 +40,21 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
     #endregion // Properties
 
 
-
     #region Constructor
 
     public CanvasViewModel(ICommandHistory commandHistory,
                            IToolMediator toolMediator,
-                           ILayersMediator layersMediator,
-                           ILayerCollection layerCollection,
+                           ILayerMediator layersMediator,
+                           IObservableLayerCollection layerCollection,
                            IDrawingOptions drawingOptions)
     {
         _commandHistory = commandHistory;
 
         _toolMediator = toolMediator;
-        _toolMediator.ActiveToolChanged += ToolMediator_ActiveToolChanged;
+        _toolMediator.ActiveItemChanged += ToolMediator_ActiveToolChanged;
 
         _layersMediator = layersMediator;
-        _layersMediator.ActiveLayerChanged += LayersMediator_ActiveLayerChanged;
+        _layersMediator.ActiveItemChanged += LayersMediator_ActiveLayerChanged;
 
         _layerCollection = layerCollection;
 
@@ -64,7 +62,6 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
     }
 
     #endregion // Constructor
-
 
 
     #region Methods
@@ -75,7 +72,6 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
     }
 
     #endregion // Methods
-
 
 
     #region EventHandlers
@@ -102,10 +98,11 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
         if (e.LeftButton == MouseButtonState.Pressed)
         {
             _drawingOptions.EndPosition = CursorHelper.GetRelativePosition(sender, e);
-            if (_commandHistory.Top is DrawCommand drawCommand)
-            {
-                drawCommand.Redraw(CurrentElement, CurrentTool, _drawingOptions);
-            }
+            
+            if (_commandHistory.Top is not DrawCommand drawCommand) return;
+            if (CurrentTool is not IRedrawingTool redrawingTool) return;
+
+            drawCommand.Redraw(CurrentElement, redrawingTool, _drawingOptions);
         }
     }
 

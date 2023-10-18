@@ -2,19 +2,13 @@
 using System;
 using System.Windows;
 using Caliburn.Micro;
-using System.Collections.Generic;
-using imPhotoshop.WPF.ViewModels;
-using imPhotoshop.WPF.Models.Drawing;
-using imPhotoshop.WPF.Core.Collections;
-using imPhotoshop.WPF.Models.Mediators;
-using imPhotoshop.WPF.Models.Navigation;
-using imPhotoshop.WPF.Core.Interfaces.Shell;
-using imPhotoshop.WPF.Core.Interfaces.Drawing;
-using imPhotoshop.WPF.Core.Interfaces.Mediators;
-using imPhotoshop.WPF.Core.Interfaces.Navigation;
-using imPhotoshop.WPF.Core.Interfaces.Collections;
-using Microsoft.Xaml.Behaviors.Input;
 using System.Windows.Input;
+using System.Collections.Generic;
+using imPhotoshop.Infrastructure;
+using Microsoft.Xaml.Behaviors.Input;
+using imPhotoshop.Infrastructure.Drawing;
+using imPhotoshop.Application.Common.Interfaces.Shell;
+using imPhotoshop.Application.Common.Interfaces.Drawing;
 
 namespace imPhotoshop.WPF;
 
@@ -36,11 +30,10 @@ public class Bootstrapper : BootstrapperBase
 
     protected override void Configure()
     {
-        _container.Instance(_container);
-        _container.PerRequest<ILayer, CanvasLayer>();
+        _container.Instance(_container)
+                  .AddInfrastructureServices()
+                  .AddWPFServices();
 
-        ConfigureServices();
-        ConfigureViewModels();
         ConfigureHotkeyBindings();
     }
 
@@ -57,26 +50,6 @@ public class Bootstrapper : BootstrapperBase
     protected override void BuildUp(object instance)
     {
         _container.BuildUp(instance);
-    }
-
-    private void ConfigureViewModels()
-    {
-        _container.Singleton<CanvasViewModel>();
-        _container.Singleton<ToolPanelViewModel>();
-        _container.Singleton<LayersViewModel>();
-        _container.Singleton<WorkspaceViewModel>();
-        _container.Singleton<IShell, ShellViewModel>();
-    }
-
-    private void ConfigureServices()
-    {
-        _container.Singleton<IWindowManager, WindowManager>();
-        _container.Singleton<ICommandHistory, CommandHistory>();
-        _container.Singleton<IToolMediator, ToolMediator>();
-        _container.Singleton<IDrawingOptions, DrawingOptions>();
-        _container.Singleton<ILayersMediator, LayersMediator>();
-        _container.Singleton<ILayerCollection, LayerCollection>();
-        _container.Instance<INavigator>(new Navigator(new Lazy<IShell>(() => _container.GetInstance<IShell>())));
     }
 
     private void ConfigureHotkeyBindings()

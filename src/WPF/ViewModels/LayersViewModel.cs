@@ -1,21 +1,21 @@
-﻿
-using Caliburn.Micro;
-using imPhotoshop.WPF.Core.Helpers;
-using imPhotoshop.WPF.Core.Interfaces.Collections;
-using imPhotoshop.WPF.Core.Interfaces.Drawing;
-using imPhotoshop.WPF.Core.Interfaces.Mediators;
-using imPhotoshop.WPF.Models.Commands;
+﻿using Caliburn.Micro;
+using System.Collections.ObjectModel;
+using imPhotoshop.Application.Commands;
+using imPhotoshop.WPF.Infrastructure.Helpers;
+using imPhotoshop.Application.Common.Interfaces.Drawing;
+using imPhotoshop.Application.Common.Interfaces.Mediators;
+using imPhotoshop.Application.Common.Interfaces.Collections;
 
 namespace imPhotoshop.WPF.ViewModels;
 
 public class LayersViewModel : Screen
 {
     private readonly ICommandHistory _commandHistory;
-    private readonly ILayersMediator _layersMediator;
-    private readonly ILayerCollection _layerCollection;
+    private readonly ILayerMediator _layersMediator;
+    private readonly IObservableLayerCollection _layerCollection;
     private ILayer? _selectedLayer = null;
 
-    public BindableCollection<ILayer> Layers => _layerCollection.ToBindableCollection();
+    public ObservableCollection<ILayer>? Layers => _layerCollection.ObservableItems;
 
     public ILayer? SelectedLayer
     {
@@ -23,14 +23,14 @@ public class LayersViewModel : Screen
         set
         {
             _selectedLayer = value;
-            _layersMediator.ChangeActiveLayer(value);
+            _layersMediator.ChangeActiveItem(value);
             NotifyOfPropertyChange(() => SelectedLayer);
         }
     }
 
     public LayersViewModel(ICommandHistory commandHistory,
-                           ILayersMediator layersMediator,
-                           ILayerCollection layerCollection)
+                           ILayerMediator layersMediator,
+                           IObservableLayerCollection layerCollection)
     {
         _commandHistory = commandHistory;
         _layersMediator = layersMediator;
@@ -39,7 +39,7 @@ public class LayersViewModel : Screen
 
     public void CreateLayer()
     {
-        var newLayer = LayersHelper.CreateLayer();
+        var newLayer = LayerHelper.CreateLayer();
         var addLayerCommand = new AddLayerCommand(_layerCollection, newLayer);
         _commandHistory.Execute(addLayerCommand);
     }
