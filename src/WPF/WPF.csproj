@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Resources\Logos\**" />
+    <EmbeddedResource Remove="Resources\Logos\**" />
+    <None Remove="Resources\Logos\**" />
+    <Page Remove="Resources\Logos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\Icons\brush.png" />
+    <None Remove="Resources\Images\Icons\imPhotoshopLogo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Icons\brush.png" />
+    <Resource Include="Resources\Images\Icons\imPhotoshopLogo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Caliburn.Micro" Version="4.0.212" />
+    <PackageReference Include="HandyControl" Version="3.4.0" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+  </ItemGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\Application\Application.csproj" />
+     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+   </ItemGroup>
+
+</Project>

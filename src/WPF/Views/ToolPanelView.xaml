@@ -1,0 +1,45 @@
+﻿<UserControl
+    x:Class="imPhotoshop.WPF.Views.ToolPanelView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:imPhotoshop.WPF.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{DynamicResource PrimaryColor}"
+    mc:Ignorable="d">
+
+    <Grid Margin="0,5">
+        <hc:FlexPanel
+            AlignContent="SpaceAround"
+            AlignItems="Center"
+            FlexDirection="Column"
+            FlexWrap="Wrap"
+            JustifyContent="FlexStart">
+
+            <RadioButton
+                x:Name="BrushToolChecked"
+                Content="{StaticResource BrushIcon}"
+                Style="{StaticResource ToolButtonStyle}" />
+            <RadioButton
+                x:Name="LineToolChecked"
+                Content="{StaticResource BrushIcon}"
+                Style="{StaticResource ToolButtonStyle}" />
+            <!--
+            <RadioButton
+                x:Name="EraserToolChecked"
+                Content="{StaticResource BrushIcon}"
+                Style="{StaticResource ToolButtonStyle}" />
+            <Button
+                x:Name="OpenColorPicker"
+                Width="30"
+                Height="30"
+                Margin="5"
+                Background="White"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="2" />
+            -->
+        </hc:FlexPanel>
+    </Grid>
+</UserControl>
