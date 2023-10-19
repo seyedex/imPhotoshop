@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Applicat
 		{56870764-E28C-4B9E-AA90-74926DC171CD} = {56870764-E28C-4B9E-AA90-74926DC171CD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{90F35153-39BA-4446-83AB-DB0D01D725E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{90F35153-39BA-4446-83AB-DB0D01D725E3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{304224E8-E68E-4909-8D6A-01DF84FDFF8C} = {304224E8-E68E-4909-8D6A-01DF84FDFF8C}
 	EndProjectSection

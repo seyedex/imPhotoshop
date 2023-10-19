@@ -28,6 +28,7 @@ public class Bootstrapper : BootstrapperBase
     protected override void Configure()
     {
         _container.Instance(_container)
+                  .Singleton<IWindowManager, WindowManager>()
                   .AddInfrastructureServices()
                   .AddWPFServices();
 
