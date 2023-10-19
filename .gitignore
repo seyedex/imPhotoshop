@@ -163,6 +163,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+[Aa]pp[Ss]ettings.*
 
 # RIA/Silverlight projects
 Generated_Code/

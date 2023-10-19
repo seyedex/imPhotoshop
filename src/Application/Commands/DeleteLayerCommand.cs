@@ -8,11 +8,13 @@ public class DeleteLayerCommand : ICommand
 {
     private readonly ILayerCollection _layers;
     private readonly ILayer _layerToDelete;
+    private readonly int _startIndex;
 
     public DeleteLayerCommand(ILayerCollection layers, ILayer layerToDelete)
     {
         _layers = layers;
         _layerToDelete = layerToDelete;
+        _startIndex = _layers.IndexOf(_layerToDelete);
     }
 
     public void Execute()
@@ -24,6 +26,6 @@ public class DeleteLayerCommand : ICommand
 
     public void Undo()
     {
-        _layers.Add(_layerToDelete);
+        _layers.Insert(_startIndex, _layerToDelete);
     }
 }

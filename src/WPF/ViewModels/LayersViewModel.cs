@@ -49,4 +49,16 @@ public class LayersViewModel : Screen
         var deleteLayerCommand = new DeleteLayerCommand(_layerCollection, SelectedLayer);
         _commandHistory.Execute(deleteLayerCommand);
     }
+
+    public void PushLayerUp()
+    {
+        var pushLayerUpCommand = new PushLayerUpCommand(_layerCollection, SelectedLayer);
+        _commandHistory.Execute(pushLayerUpCommand);
+    }
+
+    public void PushLayerDown()
+    {
+        var pushLayerDownCommand = new PushLayerDownCommand(_layerCollection, SelectedLayer);
+        _commandHistory.Execute(pushLayerDownCommand);
+    }
 }

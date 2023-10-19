@@ -17,7 +17,7 @@ public class AddLayerCommand : ICommand
 
     public void Execute()
     {
-        _layers.Add(_newLayer);
+        _layers.Insert(0, _newLayer);
     }
 
     public void Undo()
