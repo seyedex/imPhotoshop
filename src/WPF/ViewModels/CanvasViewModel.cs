@@ -82,13 +82,19 @@ public class CanvasViewModel : Screen, IAcceptArguments<Image>
         {
             if (SelectedLayer == null)
             {
-                MessageBox.Show("Select layer");
+                MessageBox.Show("Select a layer");
+                return;
+            }
+            
+            if (CurrentTool == null)
+            {
+                MessageBox.Show("Select a tool");
                 return;
             }
 
             _drawingOptions.StartPosition = CursorHelper.GetRelativePosition(sender, e);
             _drawingOptions.EndPosition = _drawingOptions.StartPosition;
-            CurrentElement = CurrentTool?.CreateElement(_drawingOptions);
+            CurrentElement = CurrentTool.CreateElement(_drawingOptions);
             _commandHistory.Execute(new DrawCommand(SelectedLayer, CurrentElement));
         }
     }
