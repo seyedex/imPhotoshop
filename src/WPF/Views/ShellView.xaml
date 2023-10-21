@@ -22,11 +22,6 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="*" MinWidth="250" />
-        </Grid.ColumnDefinitions>
 
         <!--  TOP PANEL  -->
         <Border
@@ -105,22 +100,9 @@
             </Grid>
         </Border>
 
-        <!--  LEFT PANEL  -->
-        <ContentControl
-            x:Name="ToolPanel"
-            Grid.Row="1"
-            Grid.Column="0" />
-
-        <!--  CANVAS  -->
         <ContentControl
             x:Name="ActiveItem"
             Grid.Row="1"
-            Grid.Column="1" />
-
-        <!--  RIGHT PANEL  -->
-        <ContentControl
-            x:Name="Workspace"
-            Grid.Row="1"
-            Grid.Column="2" />
+            Grid.Column="0" />
     </Grid>
 </Window>

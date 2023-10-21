@@ -12,6 +12,8 @@ public static class DependencyInjection
                   .Singleton<ToolPanelViewModel>()
                   .Singleton<LayersViewModel>()
                   .Singleton<WorkspaceViewModel>()
+                  .Singleton<LoginViewModel>()
+                  .Singleton<MainViewModel>()
                   .Singleton<IShell, ShellViewModel>();
 
         return container;

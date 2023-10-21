@@ -2,6 +2,8 @@
 
     <SolidColorBrush x:Key="BackgroundColor">#191919</SolidColorBrush>
     <SolidColorBrush x:Key="BorderColor">#262626</SolidColorBrush>
+    <SolidColorBrush x:Key="TextBorderColor">#323232</SolidColorBrush>
+    <SolidColorBrush x:Key="ActiveTextBorderColor">#dcdcdc</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryColor">#323232</SolidColorBrush>
     <SolidColorBrush x:Key="SecondaryColor">#2b2b2b</SolidColorBrush>
     <SolidColorBrush x:Key="AccentColor">#ffffff</SolidColorBrush>

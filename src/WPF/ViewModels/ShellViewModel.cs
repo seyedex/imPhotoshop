@@ -11,27 +11,17 @@ public class ShellViewModel : Conductor<object>, IShell
 {
     private readonly INavigator _navigator;
     private readonly ICommandHistory _commandHistory;
-    private readonly WorkspaceViewModel _workspaceViewModel;
-    private readonly ToolPanelViewModel _toolPanelViewModel;
 
-    public WorkspaceViewModel Workspace => _workspaceViewModel;
-    public ToolPanelViewModel ToolPanel => _toolPanelViewModel;
-
-    public ShellViewModel(INavigator navigator,
-                          ICommandHistory commandHistory,
-                          ToolPanelViewModel toolPanelViewModel,
-                          WorkspaceViewModel workspaceViewModel)
+    public ShellViewModel(INavigator navigator, ICommandHistory commandHistory)
     {
         _navigator = navigator;
         _commandHistory = commandHistory;
-        _toolPanelViewModel = toolPanelViewModel;
-        _workspaceViewModel = workspaceViewModel;
     }
 
     protected override void OnViewLoaded(object view)
     {
         base.OnViewLoaded(view);
-        _navigator.To<CanvasViewModel>().Go();
+        _navigator.To<LoginViewModel>().Go();
     }
 
     public void ActivateItem(object item)
