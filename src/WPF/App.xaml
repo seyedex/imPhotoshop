@@ -26,6 +26,7 @@
                 <ResourceDictionary Source="Resources/Styles/MenuItemStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/LoginButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/CommonTextBoxFormStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
 
                 <!--  TEMPLATES  -->
                 <ResourceDictionary Source="Resources/Templates/CanvasLayerDataTemplate.xaml" />

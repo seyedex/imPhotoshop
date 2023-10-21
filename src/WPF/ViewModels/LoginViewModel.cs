@@ -42,7 +42,7 @@ public class LoginViewModel : Screen
 
     public void CreateAccount()
     {
-        // TODO
+        _navigator.To<RegistrationViewModel>().Go();
     }
 
     public void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)

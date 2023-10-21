@@ -12,8 +12,9 @@ public static class DependencyInjection
                   .Singleton<ToolPanelViewModel>()
                   .Singleton<LayersViewModel>()
                   .Singleton<WorkspaceViewModel>()
-                  .Singleton<LoginViewModel>()
                   .Singleton<MainViewModel>()
+                  .Singleton<LoginViewModel>()
+                  .Singleton<RegistrationViewModel>()
                   .Singleton<IShell, ShellViewModel>();
 
         return container;
